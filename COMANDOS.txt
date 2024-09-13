@@ -1,0 +1,22 @@
+ollama list <lista los modelos instalados> 
+
+** INSTALAR LLMS **
+
+ollama run llama2
+ollama run deepseekcoder
+ollama run dolphin-mixtral
+ollama run codegemma
+ollama run codellama
+ollama run deepseek-coder
+ollama run orca-mini
+ollama run starcoder
+ollama run openchat
+ollama pull wizard-math
+
+** EJECUTAR GUI DE OLLAMA **
+cd ollama-gui 
+yarn dev
+
+** CERRAR PROCESO DE OLLAMA **
+sudo su
+killall ollama 
