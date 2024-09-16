@@ -21,3 +21,5 @@ yarn dev
 ** CERRAR PROCESO DE OLLAMA **
 sudo su
 killall ollama 
+systemctl stop ollama.service
+
