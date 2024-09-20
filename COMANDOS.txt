@@ -23,7 +23,7 @@ sudo su
 killall ollama 
 systemctl stop ollama.service
 
-** CONFIGURAR EL CIERRE AUTOMATICO DE OLLAMA AL INICIAR SESION **
+** CONFIGURAR EL CIERRE AUTOMATICO DE OLLAMA AL INICIAR SESION METODO #1 **
 sudo nano /etc/rc.local
 # Tras abrir rellenar con: 
 
@@ -33,5 +33,28 @@ sudo nano /etc/rc.local
 systemctl stop ollama.service
 
 exit 0
+
+** CONFIGURAR EL CIERRE AUTOMATICO DE OLLAMA AL INICIAR SESION METODO #2 **
+
+++ Abre una terminal y ejecuta el comando sudo nano /etc/systemd/system/detener-ollama.service para crear un nuevo archivo de servicio.
+
+++ Copia y pega el siguiente contenido en el archivo:
+
+[Unit]
+Description=Detener ollama.service al arranque
+After=network.target
+[Service]
+ExecStart=/usr/bin/systemctl stop ollama.service
+Type=oneshot
+[Install]
+WantedBy=multi-user.target
+
+++ Presiona Ctrl+X para salir del editor, luego Y para guardar los cambios y finalmente Enter para confirmar el nombre del archivo.
+
+++ Ejecuta el comando sudo systemctl daemon-reload para recargar la configuración de systemd.
+
+++ Ejecuta el comando sudo systemctl enable detener-ollama.service para habilitar el servicio.
+
+++ Reinicia el sistema para probar que el comando se ejecuta automáticamente.
 
 
