@@ -23,3 +23,15 @@ sudo su
 killall ollama 
 systemctl stop ollama.service
 
+** CONFIGURAR EL CIERRE AUTOMATICO DE OLLAMA AL INICIAR SESION **
+sudo nano /etc/rc.local
+# Tras abrir rellenar con: 
+
+#!/bin/bash
+
+# Comandos de inicio de sesión
+systemctl stop ollama.service
+
+exit 0
+
+
